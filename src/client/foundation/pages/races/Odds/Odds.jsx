@@ -6,7 +6,6 @@ import styled from "styled-components";
 import { Container } from "../../../components/layouts/Container";
 import { Section } from "../../../components/layouts/Section";
 import { Spacer } from "../../../components/layouts/Spacer";
-import { TrimmedImage } from "../../../components/media/TrimmedImage";
 import { TabNav } from "../../../components/navs/TabNav";
 import { Heading } from "../../../components/typographies/Heading";
 import { useFetch } from "../../../hooks/useFetch";
@@ -62,6 +61,7 @@ export const Odds = () => {
   }
 
   const isRaceClosed = moment(data.closeAt).isBefore(new Date());
+  const srcUrl = data.image.replace(/\/([^/]*jpg)/, '/400x225-$1')
 
   return (
     <Container>
@@ -76,7 +76,7 @@ export const Odds = () => {
       <Section dark shrink>
         <LiveBadge>Live</LiveBadge>
         <Spacer mt={Space * 2} />
-        <TrimmedImage height={225} src={data.image} width={400} />
+        <img height="225px" src={srcUrl} width="400px" />
       </Section>
 
       <Spacer mt={Space * 2} />

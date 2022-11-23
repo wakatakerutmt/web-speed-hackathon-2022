@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 
 import { Stack } from "../../../../../components/layouts/Stack";
-import { TrimmedImage } from "../../../../../components/media/TrimmedImage";
 import { Color, FontSize, Space } from "../../../../../styles/variables";
 
 const PlayerNumber = styled.span`
@@ -26,13 +25,14 @@ const PlayerName = styled.span`
 
 /** @type {React.VFC<ItemProps>} */
 const Item = ({ image, name, number }) => {
+  const srcUrl = image.replace(/\/([^/]*jpg)/, '/100x100-$1')
   return (
     <Stack gap={Space * 1}>
-      <TrimmedImage
+      <img
         alt={`${name}選手のプロフィール写真`}
-        height={100}
-        src={image}
-        width={100}
+        height="100px"
+        src={srcUrl}
+        width="100px"
       />
 
       <Stack horizontal alignItems="center" gap={Space / 2} wrap="wrap">

@@ -5,7 +5,6 @@ import styled from "styled-components";
 import { Container } from "../../../components/layouts/Container";
 import { Section } from "../../../components/layouts/Section";
 import { Spacer } from "../../../components/layouts/Spacer";
-import { TrimmedImage } from "../../../components/media/TrimmedImage";
 import { TabNav } from "../../../components/navs/TabNav";
 import { Heading } from "../../../components/typographies/Heading";
 import { useAuthorizedFetch } from "../../../hooks/useAuthorizedFetch";
@@ -39,6 +38,8 @@ export const RaceResult = () => {
     return <Container>Loading...</Container>;
   }
 
+  const srcUrl = data.image.replace(/\/([^/]*jpg)/, '/400x225-$1')
+
   return (
     <Container>
       <Spacer mt={Space * 2} />
@@ -52,7 +53,7 @@ export const RaceResult = () => {
       <Section dark shrink>
         <LiveBadge>Live</LiveBadge>
         <Spacer mt={Space * 2} />
-        <TrimmedImage height={225} src={data.image} width={400} />
+        <img height="225px" src={srcUrl} width="400px" />
       </Section>
 
       <Spacer mt={Space * 2} />
