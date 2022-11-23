@@ -1,4 +1,5 @@
-import { range, without } from "lodash";
+import range from "lodash/range";
+import without from "lodash/without";
 import React, { useCallback, useState } from "react";
 import styled from "styled-components";
 

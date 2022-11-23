@@ -1,4 +1,5 @@
-import { sortBy, take } from "lodash";
+import sortBy from "lodash/sortBy";
+import take from "lodash/take";
 import React from "react";
 import styled from "styled-components";
 
