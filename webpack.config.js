@@ -5,7 +5,6 @@ const zlib = require("zlib");
 const CompressionPlugin = require('compression-webpack-plugin');
 const CopyPlugin = require("copy-webpack-plugin");
 const webpack = require("webpack");
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const nodeExternals = require("webpack-node-externals");
 
 function abs(...args) {
@@ -74,7 +73,6 @@ module.exports = [
         test: /\.(js|css|html|svg)$/,
         threshold: 10240
       }),
-      new BundleAnalyzerPlugin(),
       new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /ja|en/),
     ],
     resolve: {
