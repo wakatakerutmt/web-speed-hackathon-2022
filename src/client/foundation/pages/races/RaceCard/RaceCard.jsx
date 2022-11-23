@@ -48,7 +48,7 @@ export const RaceCard = () => {
       <Section dark shrink>
         <LiveBadge>Live</LiveBadge>
         <Spacer mt={Space * 2} />
-        <img height="225px" src={srcUrl} width="400px" />
+        <img src={srcUrl} />
       </Section>
 
       <Spacer mt={Space * 2} />

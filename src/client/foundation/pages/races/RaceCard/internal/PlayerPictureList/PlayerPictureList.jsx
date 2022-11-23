@@ -30,9 +30,7 @@ const Item = ({ image, name, number }) => {
     <Stack gap={Space * 1}>
       <img
         alt={`${name}選手のプロフィール写真`}
-        height="100px"
         src={srcUrl}
-        width="100px"
       />
 
       <Stack horizontal alignItems="center" gap={Space / 2} wrap="wrap">
