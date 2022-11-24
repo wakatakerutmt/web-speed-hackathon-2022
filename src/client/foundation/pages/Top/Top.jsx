@@ -128,7 +128,7 @@ export const Top = () => {
           )
       : [];
   const todayRacesToShow = useTodayRacesWithAnimation(todayRaces);
-  const heroImageUrl = '/assets/images/hero.webp';
+  const heroImageUrl = '/assets/images/hero.avif';
 
   return (
     <Container>

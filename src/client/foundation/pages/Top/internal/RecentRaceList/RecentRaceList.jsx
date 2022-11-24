@@ -80,7 +80,7 @@ const Item = ({ race }) => {
     };
   }, [race.id, startAnimation, abortAnimation, resetAnimation]);
 
-  const srcPath = race.image.replace(/\/([^/]*jpg)/, '/100x100-$1')
+  const srcPath = race.image.replace(/\/([^/]*jpg)/, '/100x100-$1').replace(/(.jpg)/, '.avif')
 
   return (
     <ItemWrapper $opacity={opacity}>
@@ -94,7 +94,7 @@ const Item = ({ race }) => {
 
         <Stack.Item grow={0} shrink={0}>
           <Stack horizontal alignItems="center" gap={Space * 2}>
-            <img src={srcPath} />
+            <img decoding="async" loading="lazy" src={srcPath} />
             <RaceButton to={`/races/${race.id}/race-card`}>投票</RaceButton>
           </Stack>
         </Stack.Item>

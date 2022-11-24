@@ -25,11 +25,13 @@ const PlayerName = styled.span`
 
 /** @type {React.VFC<ItemProps>} */
 const Item = ({ image, name, number }) => {
-  const srcUrl = image.replace(/\/([^/]*jpg)/, '/100x100-$1')
+  const srcUrl = image.replace(/\/([^/]*jpg)/, '/100x100-$1').replace(/(.jpg)/, '.avif')
   return (
     <Stack gap={Space * 1}>
       <img
         alt={`${name}選手のプロフィール写真`}
+        decoding="async"
+        loading="lazy"
         src={srcUrl}
       />
 

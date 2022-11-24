@@ -38,7 +38,7 @@ export const RaceResult = () => {
     return <Container>Loading...</Container>;
   }
 
-  const srcUrl = data.image.replace(/\/([^/]*jpg)/, '/400x225-$1')
+  const srcUrl = data.image.replace(/\/([^/]*jpg)/, '/400x225-$1').replace(/(.jpg)/, '.avif')
 
   return (
     <Container>
@@ -53,7 +53,7 @@ export const RaceResult = () => {
       <Section dark shrink>
         <LiveBadge>Live</LiveBadge>
         <Spacer mt={Space * 2} />
-        <img src={srcUrl} />
+        <img decoding="async" loading="lazy" src={srcUrl} />
       </Section>
 
       <Spacer mt={Space * 2} />
