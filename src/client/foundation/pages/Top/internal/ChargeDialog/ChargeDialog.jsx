@@ -32,7 +32,14 @@ export const ChargeDialog = forwardRef(({ closeDialog, onComplete, showDialog },
   const [branchCode, setBranchCode] = useState("");
   const [accountNo, setAccountNo] = useState("");
   const [amount, setAmount] = useState(0);
-  const { data } = useFetch("/api/zenginCode", jsonFetcher);
+  const [zenginCode, setZenginCode] = useState(null);
+
+  const handleOnFocusInput = useCallback(async () => {
+    if (zenginCode === null) {
+      const data = await jsonFetcher("/api/zenginCode");
+      setZenginCode(data.zenginCode);
+    }
+  }, [zenginCode]);
 
   const clearForm = useCallback(() => {
     setBankCode("");
@@ -81,8 +88,7 @@ export const ChargeDialog = forwardRef(({ closeDialog, onComplete, showDialog },
   let bankList = null;
   let bank = null;
   let branch = null;
-  if (data != null) {
-    const { zenginCode } = data;
+  if (zenginCode != null) {
     bankList = Object.entries(zenginCode).map(([code, { name }]) => ({
       code,
       name,
@@ -105,6 +111,7 @@ export const ChargeDialog = forwardRef(({ closeDialog, onComplete, showDialog },
               <input
                 list="ChargeDialog-bank-list"
                 onChange={handleCodeChange}
+                onFocus={handleOnFocusInput}
                 value={bankCode}
               />
             </label>
