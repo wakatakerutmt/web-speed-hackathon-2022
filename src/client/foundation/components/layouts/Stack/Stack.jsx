@@ -20,7 +20,7 @@ const Wrapper = styled.div`
  * @property {import('csstype').Property.FlexWrap=} wrap
  */
 
-export const Stack = (
+const StackOrigin = (
   /** @type {React.PropsWithChildren<Props>} */
   { alignItems, as, children, gap, horizontal, justifyContent, wrap },
 ) => {
@@ -37,6 +37,7 @@ export const Stack = (
     </Wrapper>
   );
 };
+export const Stack = React.memo(StackOrigin)
 
 const ItemWrapper = styled.div`
   flex-basis: ${({ $basis }) => $basis};
@@ -60,4 +61,4 @@ const Item = ({ as, basis, children, grow, shrink }) => {
     </ItemWrapper>
   );
 };
-Stack.Item = Item;
+Stack.Item = React.memo(Item);

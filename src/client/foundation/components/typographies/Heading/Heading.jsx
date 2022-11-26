@@ -21,6 +21,8 @@ const Wrapper = styled.h1`
  */
 
 /** @type {React.FC<Props>} */
-export const Heading = ({ as, children }) => {
+const HeadingOrigin = ({ as, children }) => {
   return <Wrapper as={as}>{children}</Wrapper>;
 };
+
+export const Heading = React.memo(HeadingOrigin)

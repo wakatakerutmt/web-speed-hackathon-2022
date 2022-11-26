@@ -29,7 +29,9 @@ const Wrapper = styled.div((props) => {
   }, {});
 });
 
-/** @type {React.FC<{ [K in keyof spacingMap]?: number | string }>} */
-export const Spacer = ({ children, ...rest }) => {
-  return <Wrapper {...rest}>{children}</Wrapper>;
+const SpacerOrigin = ({ children, ...rest }) => {
+  return <Wrapper {...rest}>{children}</Wrapper>
 };
+
+/** @type {React.FC<{ [K in keyof spacingMap]?: number | string }>} */
+export const Spacer = React.memo(SpacerOrigin)

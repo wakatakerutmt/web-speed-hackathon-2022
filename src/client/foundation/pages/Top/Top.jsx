@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import React, { lazy, Suspense, useCallback, useEffect, useRef, useState } from "react";
+import React, { Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 
@@ -119,7 +119,7 @@ export const Top = () => {
     revalidate();
   }, [revalidate]);
 
-  const todayRaces =
+  const todayRaces = useMemo( () => (
     raceData != null
       ? [...raceData.races]
           .sort(
@@ -129,7 +129,8 @@ export const Top = () => {
           .filter((/** @type {Model.Race} */ race) =>
             isSameDay(race.startAt, date),
           )
-      : [];
+      : []
+  ), [date, raceData]);
   const todayRacesToShow = useTodayRacesWithAnimation(todayRaces);
   const heroImageUrl = '/assets/images/hero.avif';
 

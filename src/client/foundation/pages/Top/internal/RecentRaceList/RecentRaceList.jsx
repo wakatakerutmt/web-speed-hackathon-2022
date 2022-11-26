@@ -8,13 +8,14 @@ import { easeOutCubic, useAnimation } from "../../../../hooks/useAnimation";
 import { Color, FontSize, Radius, Space } from "../../../../styles/variables";
 import { formatCloseAt } from "../../../../utils/DateUtils";
 
-export const RecentRaceList = ({ children }) => {
+const RecentRaceListOrigin = ({ children }) => {
   return (
     <Stack as="ul" gap={Space * 2}>
       {children}
     </Stack>
   );
 };
+export const RecentRaceList = React.memo(RecentRaceListOrigin)
 
 const ItemWrapper = styled.li`
   background: ${Color.mono[0]};
@@ -102,4 +103,4 @@ const Item = ({ race }) => {
     </ItemWrapper>
   );
 };
-RecentRaceList.Item = Item;
+RecentRaceList.Item = React.memo(Item);
