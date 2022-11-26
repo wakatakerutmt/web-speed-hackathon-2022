@@ -60,6 +60,7 @@ export const Odds = () => {
     return (
       <div>
         <Container>Loading...</Container>
+        <div style={{ minHeight: "100vh" }} />
       </div>
     )
   }
