@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
+import sample from "lodash/sample";
 import { v4 as uuid } from "uuid";
 
-import { sample }from "../src/client/foundation/utils/MyLodash";
 import { Race } from "../src/model/index.js";
 import { createConnection } from "../src/server/typeorm/connection.js";
 

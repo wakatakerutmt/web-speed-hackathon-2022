@@ -1,3 +1,5 @@
+import range from "lodash/range";
+import without from "lodash/without";
 import React, { useCallback, useState } from "react";
 import styled from "styled-components";
 
@@ -5,7 +7,6 @@ import { BaseButton } from "../../../../../components/buttons/BaseButton";
 import { Spacer } from "../../../../../components/layouts/Spacer";
 import { Stack } from "../../../../../components/layouts/Stack";
 import { Color, FontSize, Space } from "../../../../../styles/variables";
-import { range, without } from "../../../../../utils/MyLodash";
 import { OddsMarker } from "../OddsMarker";
 
 const ScrollWrapper = styled.div`

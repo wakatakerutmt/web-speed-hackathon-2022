@@ -1,8 +1,9 @@
+import fill from "lodash/fill";
 import random from "lodash/random";
+import sample from "lodash/sample";
 import shuffle from "lodash/shuffle";
 import { v4 as uuid } from "uuid";
 
-import { sample } from "../src/client/foundation/utils/MyLodash";
 import { Player, Race, RaceEntry } from "../src/model/index.js";
 import { createConnection } from "../src/server/typeorm/connection.js";
 
@@ -40,7 +41,7 @@ export async function insertRaceEntries() {
       .getMany();
 
     const predictionMarks = shuffle(
-      ["◎", "○", "△", "×", ...Array(players.length).fill("")].slice(
+      ["◎", "○", "△", "×", ...fill(Array(players.length), "")].slice(
         0,
         players.length,
       ),
