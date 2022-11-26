@@ -4,7 +4,7 @@ const zlib = require("zlib");
 
 const CompressionPlugin = require('compression-webpack-plugin');
 const CopyPlugin = require("copy-webpack-plugin");
-const webpack = require("webpack");
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const nodeExternals = require("webpack-node-externals");
 
 function abs(...args) {
@@ -52,6 +52,17 @@ module.exports = [
       ],
     },
     name: "client",
+    optimization: {
+      splitChunks: {
+        cacheGroups: {
+          zengin: {
+            chunks: 'all',
+            name: 'zengin',
+            test: /[\\/]node_modules[\\/](zengin-code)[\\/]/,
+          },
+        },
+      },
+    },
     output: {
       path: DIST_PUBLIC,
     },
@@ -72,7 +83,7 @@ module.exports = [
         test: /\.(js|css|html|svg)$/,
         threshold: 10240
       }),
-      new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /ja|en/),
+      // new BundleAnalyzerPlugin(),
     ],
     resolve: {
       extensions: [".js", ".jsx"],
@@ -99,7 +110,7 @@ module.exports = [
                     spec: true,
                   },
                 ],
-                "@babel/preset-react",
+                "@babel/preset-react"
               ],
             },
           },
