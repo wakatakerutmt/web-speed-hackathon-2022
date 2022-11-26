@@ -96,6 +96,8 @@ export const Top = () => {
 
   const chargeDialogRef = useRef(null);
 
+  const [showDialog, setShowDialog] = useState(false);
+
   const { data: userData, revalidate } = useAuthorizedFetch(
     "/api/users/me",
     authorizedJsonFetcher,
@@ -107,7 +109,7 @@ export const Top = () => {
     if (chargeDialogRef.current === null) {
       return;
     }
-
+    setShowDialog(true);
     chargeDialogRef.current.showModal();
   }, []);
 
@@ -159,7 +161,7 @@ export const Top = () => {
         )}
       </section>
 
-      <ChargeDialog ref={chargeDialogRef} onComplete={handleCompleteCharge} />
+      <ChargeDialog ref={chargeDialogRef} closeDialog={() => setShowDialog(false)} onComplete={handleCompleteCharge} showDialog={showDialog}/>
     </Container>
   );
 };

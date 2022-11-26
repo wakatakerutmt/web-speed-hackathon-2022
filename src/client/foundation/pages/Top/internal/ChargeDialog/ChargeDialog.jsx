@@ -18,7 +18,7 @@ const CHARGE = "charge";
  */
 
 /** @type {React.ForwardRefExoticComponent<{Props>} */
-export const ChargeDialog = forwardRef(({ onComplete }, ref) => {
+export const ChargeDialog = forwardRef(({ closeDialog, onComplete, showDialog }, ref) => {
   const [bankCode, setBankCode] = useState("");
   const [branchCode, setBranchCode] = useState("");
   const [accountNo, setAccountNo] = useState("");
@@ -29,6 +29,7 @@ export const ChargeDialog = forwardRef(({ onComplete }, ref) => {
     setBranchCode("");
     setAccountNo("");
     setAmount(0);
+    closeDialog();
   }, []);
 
   const [charge] = useMutation("/api/users/me/charge", {
@@ -76,6 +77,7 @@ export const ChargeDialog = forwardRef(({ onComplete }, ref) => {
 
   return (
     <Dialog ref={ref} onClose={handleCloseDialog}>
+      {showDialog &&
       <section>
         <Heading as="h1">チャージ</Heading>
 
@@ -156,6 +158,7 @@ export const ChargeDialog = forwardRef(({ onComplete }, ref) => {
           </Stack>
         </form>
       </section>
+      }
     </Dialog>
   );
 });
