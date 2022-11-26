@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
 import React, { forwardRef, useCallback, useState } from "react";
+import styled, { keyframes } from "styled-components";
 import zenginCode from "zengin-code";
 
 import { Dialog } from "../../../../components/layouts/Dialog";
@@ -11,6 +11,14 @@ import { Space } from "../../../../styles/variables";
 
 const CANCEL = "cancel";
 const CHARGE = "charge";
+
+const fadeIn = keyframes`
+  from { opacity: 0; }
+  to { opacity: 1; }
+`;
+const FadeIn = styled.div`
+  animation: ${fadeIn} 1s;
+`;
 
 /**
  * @typedef Props
@@ -100,9 +108,9 @@ export const ChargeDialog = forwardRef(({ closeDialog, onComplete, showDialog },
             </datalist>
 
             {bank != null && (
-              <motion.div animate={{ opacity: 1 }} initial={{ opacity: 0 }}>
+              <FadeIn>
                 銀行名: {bank.name}銀行
-              </motion.div>
+              </FadeIn>
             )}
 
             <label>
@@ -124,9 +132,9 @@ export const ChargeDialog = forwardRef(({ closeDialog, onComplete, showDialog },
             </datalist>
 
             {branch && (
-              <motion.div animate={{ opacity: 1 }} initial={{ opacity: 0 }}>
+              <FadeIn animate={{ opacity: 1 }} initial={{ opacity: 0 }}>
                 支店名: {branch.name}
-              </motion.div>
+              </FadeIn>
             )}
 
             <label>
