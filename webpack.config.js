@@ -52,17 +52,6 @@ module.exports = [
       ],
     },
     name: "client",
-    optimization: {
-      splitChunks: {
-        cacheGroups: {
-          zengin: {
-            chunks: 'all',
-            name: 'zengin',
-            test: /[\\/]node_modules[\\/](zengin-code)[\\/]/,
-          },
-        },
-      },
-    },
     output: {
       path: DIST_PUBLIC,
     },
