@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { lazy, Suspense, useCallback, useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 
@@ -17,6 +17,8 @@ import { difference, slice } from "../../utils/MyLodash";
 import { ChargeDialog } from "./internal/ChargeDialog";
 import { HeroImage } from "./internal/HeroImage";
 import { RecentRaceList } from "./internal/RecentRaceList";
+
+// const ChargeDialog = lazy(() => import("./internal/ChargeDialog").then(({ ChargeDialog }) => ({ default: ChargeDialog })))
 
 const ChargeButton = styled.button`
   background: ${Color.mono[700]};
@@ -161,7 +163,10 @@ export const Top = () => {
         )}
       </section>
 
-      <ChargeDialog ref={chargeDialogRef} closeDialog={() => setShowDialog(false)} onComplete={handleCompleteCharge} showDialog={showDialog}/>
+      
+      <Suspense fallback="">
+        <ChargeDialog ref={chargeDialogRef} closeDialog={() => setShowDialog(false)} onComplete={handleCompleteCharge} showDialog={showDialog}/>
+      </Suspense>
     </Container>
   );
 };
