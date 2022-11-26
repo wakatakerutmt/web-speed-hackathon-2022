@@ -95,7 +95,7 @@ const Item = ({ race }) => {
 
         <Stack.Item grow={0} shrink={0}>
           <Stack horizontal alignItems="center" gap={Space * 2}>
-            <img decoding="async" loading="lazy" src={srcPath} />
+            <img decoding="async" height="100" loading="lazy" src={srcPath} width="100" />
             <RaceButton to={`/races/${race.id}/race-card`}>投票</RaceButton>
           </Stack>
         </Stack.Item>
