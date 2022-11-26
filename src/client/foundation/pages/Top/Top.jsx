@@ -1,6 +1,4 @@
 import dayjs from "dayjs";
-import difference from "lodash/difference";
-import slice from "lodash/slice";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
@@ -14,6 +12,7 @@ import { useFetch } from "../../hooks/useFetch";
 import { Color, Radius, Space } from "../../styles/variables";
 import { isSameDay } from "../../utils/DateUtils";
 import { authorizedJsonFetcher, jsonFetcher } from "../../utils/HttpUtils";
+import { difference, slice } from "../../utils/MyLodash";
 
 import { ChargeDialog } from "./internal/ChargeDialog";
 import { HeroImage } from "./internal/HeroImage";
