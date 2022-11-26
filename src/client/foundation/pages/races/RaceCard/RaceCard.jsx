@@ -53,7 +53,7 @@ export const RaceCard = () => {
       <Section dark shrink>
         <LiveBadge>Live</LiveBadge>
         <Spacer mt={Space * 2} />
-        <img height="225" loading="eager" src={srcUrl} style={{height: "auto", width: "100%"}} width="400"/>
+        <img decoding="async" height="225" loading="eager" src={srcUrl} style={{height: "auto", width: "100%"}} width="400"/>
       </Section>
 
       <Spacer mt={Space * 2} />

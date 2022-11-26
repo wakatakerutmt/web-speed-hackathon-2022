@@ -16,8 +16,9 @@ const Image = styled.img`
 export const HeroImage = () => {
   return <Image 
     alt="" 
-    height="735"  
-    src="/assets/images/hero.avif" 
+    decoding="async"  
+    height="735" 
+    src="/assets/images/hero.avif"
     style={{height: "auto", width: "100%"}}
     width="1024"
   />;
