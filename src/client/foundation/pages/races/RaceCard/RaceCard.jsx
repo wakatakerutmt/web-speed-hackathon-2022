@@ -30,7 +30,12 @@ export const RaceCard = () => {
   const { data } = useFetch(`/api/races/${raceId}`, jsonFetcher);
 
   if (data == null) {
-    return <Container>Loading...</Container>;
+    return (
+      <div>
+        <Container>Loading...</Container>
+        <div style={{ minHeight: "100vh" }} />
+      </div>
+    )
   }
 
   const srcUrl = data.image.replace(/\/([^/]*jpg)/, '/400x225-$1').replace(/(.jpg)/, '.avif')
@@ -48,7 +53,7 @@ export const RaceCard = () => {
       <Section dark shrink>
         <LiveBadge>Live</LiveBadge>
         <Spacer mt={Space * 2} />
-        <img decoding="async" loading="lazy" src={srcUrl} />
+        <img height="255" loading="eager" src={srcUrl} width="400"/>
       </Section>
 
       <Spacer mt={Space * 2} />

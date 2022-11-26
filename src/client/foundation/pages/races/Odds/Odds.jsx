@@ -57,7 +57,12 @@ export const Odds = () => {
   );
 
   if (data == null) {
-    return <Container>Loading...</Container>;
+    return (
+      <div>
+        <Container>Loading...</Container>
+        <div style={{ minHeight: "100vh" }} />
+      </div>
+    )
   }
 
   const isRaceClosed = dayjs(data.closeAt).isBefore(new Date());
@@ -76,7 +81,7 @@ export const Odds = () => {
       <Section dark shrink>
         <LiveBadge>Live</LiveBadge>
         <Spacer mt={Space * 2} />
-        <img decoding="async" loading="lazy" src={srcUrl} />
+        <img height="255" loading="eager"  src={srcUrl} width="400" />
       </Section>
 
       <Spacer mt={Space * 2} />
