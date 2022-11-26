@@ -132,11 +132,10 @@ export const Top = () => {
       : []
   ), [date, raceData]);
   const todayRacesToShow = useTodayRacesWithAnimation(todayRaces);
-  const heroImageUrl = '/assets/images/hero.avif';
 
   return (
     <Container>
-      {heroImageUrl !== null && <HeroImage url={heroImageUrl} />}
+      <HeroImage/>
 
       <Spacer mt={Space * 2} />
       {userData && (
